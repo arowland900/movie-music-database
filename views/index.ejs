@@ -36,7 +36,9 @@
       
       <ul>
       <% all.forEach(m => { %>
-        <li><%= m.title %></li>
+        <li>
+          <a href="/movies/<%= m._id %>"><%= m.title %></a>
+        </li>
       <% }) %>
       </ul>
   <% } else { %>
