@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-// var songsCtrl = require('../controllers/songs')
+var songsCtrl = require('../controllers/songs')
 
-// /* GET home page. */
+/* GET home page. */
 
-// router.post('/', moviesCtrl.create)
-// router.get('/new', moviesCtrl.new);
+router.post('/', songsCtrl.create)
+router.get('/new', songsCtrl.new);
 
 module.exports = router;
