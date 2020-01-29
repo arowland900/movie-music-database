@@ -6,6 +6,6 @@ var songsCtrl = require('../controllers/songs')
 
 router.post('/', songsCtrl.create)
 router.get('/new', songsCtrl.new);
-router.get('/:id', moviesCtrl.show);
+router.get('/:id', songsCtrl.show);
 
 module.exports = router;
