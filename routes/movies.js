@@ -4,6 +4,8 @@ var moviesCtrl = require('../controllers/movies')
 
 /* GET home page. */
 router.get('/', moviesCtrl.index);
+router.post('/', moviesCtrl.search);
 router.get('/new', moviesCtrl.new);
+router.post('/movies', moviesCtrl.create)
 
 module.exports = router;

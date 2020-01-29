@@ -7,10 +7,10 @@ var movieSchema = new Schema({
     type: String,
     required: true
   },
-  releaseYear: {
+  year: {
     type: Number
   }, 
-  mpaaRating: String,
+  rating: String,
   songs: [{type: Schema.Types.ObjectId, ref: 'Song'}]
 }, {
   timestamps: true

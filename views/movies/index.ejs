@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Movie Music Database</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body class="container">
-    <h1 class="jumbotron text-center">Movie Music Database</h1>
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
-        <form action="/" method="POST">
-          <div class="input-group">
-            <input type="text" name="username" autocomplete="off" class="form-control"
-              placeholder="Enter Movie or Song Title Here">
-            <span class="input-group-btn">
-              <button class="btn btn-success"
-                type="submit">Go!</button>
-            </span>
-          </div>
-        </form>
-      </div>
-    </div>
-    <hr>
-    <div class="row col-xs-8 col-xs-offset-2">
-        <h3 class="text-center text-info">
-          Seach for a Movie or Song!
-        </h3>
 
+<head>
+  <title>Movie Music Database</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="container">
+  <nav>
+    <a href="/new">add movie</a>
+    <a href="/">home</a>
+
+  </nav>
+  <h1 class="jumbotron text-center">Movie Music Database</h1>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <form action="/" method="POST">
+        <div class="input-group">
+          <input type="text" name="title" autocomplete="off" class="form-control"
+            placeholder="Enter Movie or Song Title Here">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="submit">Go!</button>
+          </span>
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+  <hr>
+  <% if(movies || songs) { %>
+    <% if(movies.length || songs.length){ %>
+      <%let all = [...movies, ...songs].sort() %>
+      <% all.forEach(m => { %>
+        <%= m.title %>
+    <% }) %>
+  <% } else { %>
+  <div class="row col-xs-8 col-xs-offset-2">
+    <h3 class="text-center text-info">
+      No Titles Match!
+    </h3>
+
+  </div>
+   <% } %>
+  <% } else { %>
+    <div class="row col-xs-8 col-xs-offset-2">
+      <h3 class="text-center text-info">
+        Search for a Title!
+      </h3>
+  
+    </div>
+  <% } %>
+</body>
+
 </html>
