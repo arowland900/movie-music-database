@@ -11,7 +11,8 @@ var movieSchema = new Schema({
     type: Number
   }, 
   rating: String,
-  songs: [{type: Schema.Types.ObjectId, ref: 'Song'}]
+  songs: [{type: Schema.Types.ObjectId, ref: 'Song'}],
+  type: { type: String, default: 'movie' }
 }, {
   timestamps: true
 });

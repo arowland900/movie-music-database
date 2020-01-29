@@ -38,6 +38,7 @@
       <% all.forEach(m => { %>
         <li>
           <a href="/movies/<%= m._id %>"><%= m.title %></a>
+          <%= m %>
         </li>
       <% }) %>
       </ul>
