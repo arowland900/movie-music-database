@@ -16,13 +16,13 @@
     </nav>
     <h1 class="jumbotron text-center"><%= movie.title %></h1>
     <section id="show-page">
-        <div>Title: </div>
-        <div><%= movie.title %></div>
-        <div>Release Year: </div>
-        <div><%= movie.year %></div>
-        <div>Rating: </div>
-        <div><%= movie.rating %></div>
-        <div>Songs:</div>
+        <h1>Title: <strong><%= movie.title %></strong></h1>
+        
+        <h1>Release Year: <strong><%= movie.year %></strong></h1>
+        
+        <h1>Rating: <strong><%= movie.rating %></strong></h1>
+        
+        <h1>Songs:</h1>
         <ul>
             <%- movie.songs.map(p => 
         `<li>${p.title} <small>${p.artist}</small></li>`
