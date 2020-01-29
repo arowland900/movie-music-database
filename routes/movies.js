@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var moviesCtrl = require('../controllers/movies')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('movies/index', { title: 'The Movie Music Database' });
-});
+router.get('/', moviesCtrl.index);
 
 module.exports = router;
