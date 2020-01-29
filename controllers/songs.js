@@ -8,7 +8,7 @@ module.exports = {
 
 
 function newSong(req, res) {
-    res.render('movies/new', { title: "Add Movie" })
+    res.render('songs/new', { title: "Add Movie" })
 }
 
 function create(req, res) {
@@ -17,7 +17,7 @@ function create(req, res) {
     }
     var movie = new Song(req.body);
     movie.save(function (err) {
-        if (err) return res.redirect('/new');
+        if (err) return res.redirect('/songs/new');
         res.redirect(`/`);
     });
 }

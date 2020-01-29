@@ -3,12 +3,23 @@ var Song = require('../models/song');
 
 module.exports = {
     new: newMovie,
-    create
+    create,
+    show
 };
 
 
 function newMovie(req, res) {
     res.render('movies/new', { title: "Add Movie" })
+}
+
+function show(req, res) {
+    Movie
+        .findById(req.params.id)
+        .populate('songs')
+        .exec(function (err, movie) {
+            if (err) return res.redirect('/')
+            res.render('movies/detail', { movie })
+        });
 }
 
 function create(req, res) {
@@ -17,7 +28,7 @@ function create(req, res) {
     }
     var movie = new Movie(req.body);
     movie.save(function (err) {
-        if (err) return res.redirect('/new');
+        if (err) return res.redirect('/movies/new');
         res.redirect(`/`);
     });
 }
