@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Movie Music Database</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body class="container">
-  <nav>
-    <a href="/movies/new">add movie</a>
-    <a href="/songs/new">add song</a>
-    <a href="/">home</a>
-
-  </nav>
+<%- include('./partials/header') %>
   <h1 class="jumbotron text-center">Movie Music Database</h1>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
@@ -36,10 +20,15 @@
       
       <ul>
       <% all.forEach(m => { %>
-        <li>
-          <a href="/movies/<%= m._id %>"><%= m.title %></a>
-          <%= m %>
-        </li>
+        <% if(m.type == 'movie'){ %>
+          <li>
+            <a href="/movies/<%= m._id %>"><%= m.title %></a>
+          </li>
+        <% } else {%>
+          <li>
+            <a href="/songs/<%= m._id %>"><%= m.title %></a>
+          </li>
+        <% } %>
       <% }) %>
       </ul>
   <% } else { %>

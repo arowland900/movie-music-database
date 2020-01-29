@@ -10,7 +10,10 @@ var movieSchema = new Schema({
   year: {
     type: Number
   }, 
-  rating: String,
+  rating: {
+    type: String,
+    enum : ['G','PG', 'PG-13', 'R', 'Not Rated', 'NC-17']
+  },
   songs: [{type: Schema.Types.ObjectId, ref: 'Song'}],
   type: { type: String, default: 'movie' }
 }, {
