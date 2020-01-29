@@ -10,7 +10,9 @@
     <h1>Songs:</h1>
     <ul>
         <%- movie.songs.map(p => 
-        `<li>${p.title} <small>${p.artist}</small></li>`
+        `
+        <a href=/songs/${p._id}><li>${p.title} <small>${p.artist}</small></li></a>
+        `
       ).join('') %>
     </ul>
 </section>

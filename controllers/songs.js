@@ -17,7 +17,7 @@ function show(req, res) {
         .findById(req.params.id)
         .exec(function (err, song) {
             if (err) return res.redirect('/')
-            res.render('movies/detail', { song })
+            res.render('songs/detail', { song })
         });
 }
 
