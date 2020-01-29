@@ -32,9 +32,12 @@
   <% if(movies || songs) { %>
     <% if(movies.length || songs.length){ %>
       <%let all = [...movies, ...songs].sort() %>
+      
+      <ul>
       <% all.forEach(m => { %>
-        <%= m.title %>
-    <% }) %>
+        <li><%= m.title %></li>
+      <% }) %>
+      </ul>
   <% } else { %>
   <div class="row col-xs-8 col-xs-offset-2">
     <h3 class="text-center text-info">
