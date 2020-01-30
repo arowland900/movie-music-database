@@ -19,8 +19,8 @@ function index(req, res) {
                     //     return a.title[0] - b.title[0]
                     // })
                     let all = [...movies, ...songs].sort((a, b) => {
-                        if (a.title < b.title) { return -1; }
-                        if (a.title > b.title) { return 1; }
+                        if (a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+                        if (a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
                         return 0;
                     })
                     // console.log(all)
@@ -31,8 +31,12 @@ function index(req, res) {
     } else {
         Movie.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, movies) {
             Song.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, songs) {
-                // let all = [...songs, movies].sort()
-                res.render('index', { title: "Add Movie", movies, songs })
+                let all = [...movies, ...songs].sort((a, b) => {
+                    if (a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+                    if (a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+                    return 0;
+                })
+                res.render('index', { title: "Add Movie", movies, songs, all })
             })
         });
     }
