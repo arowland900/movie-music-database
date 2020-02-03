@@ -12,7 +12,7 @@ var showSchema = new Schema({
         epTitle: String,
         num: Number
     },
-    type: { type: String, default: 'song' }
+    type: { type: String, default: 'show' }
 }, {
     timestamps: true
 });
