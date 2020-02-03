@@ -13,6 +13,7 @@ var showSchema = new Schema({
   director: {
     type: String
   },
+  year: Number,
   episodes: [{ type: Schema.Types.ObjectId, ref: 'Episode' }],
   type: { type: String, default: 'show' }
 }, {

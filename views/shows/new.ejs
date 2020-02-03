@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+    <h1 class="jumbotron text-center">Add Show Here</h1>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <form action="/shows" method="POST">
+                <div class="form-group">
+                    <label for="sel1">Title:</label>
+                    <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Title">
+                    <label for="sel1">Director:</label>
+                    <input type="text" name="director" autocomplete="off" class="form-control" placeholder="Artist">
+                    <label for="sel1">Writer:</label>
+                    <input type="text" name="writer" autocomplete="off" class="form-control" placeholder="Year">
+                    <label for="sel1">Year:</label>
+                    <input type="text" name="year" autocomplete="off" class="form-control" placeholder="Year">
+                </div>
+                <!-- <span class="input-group-btn"> -->
+                    <!-- <br> -->
+                    <button class="btn btn-success" type="submit">Submit</button>
+                <!-- </span> -->
+            </form>
+        </div>
+    </div>
+    <hr>
+
+</body>
+
+</html>

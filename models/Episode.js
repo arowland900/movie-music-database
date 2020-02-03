@@ -9,8 +9,9 @@ var episodeSchema = new Schema({
     },
     season: Number,
     epNum: Number,
+    airDate: Date,
+    songs: [{type: Schema.Types.ObjectId, ref: 'Song'}],
     type: { type: String, default: 'episode' },
-    songs: [{type: Schema.Types.ObjectId, ref: 'Song'}]
 }, {
     timestamps: true
 });
