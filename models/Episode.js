@@ -3,13 +3,12 @@ var Schema = mongoose.Schema;
 
 
 var episodeSchema = new Schema({
-    showTitle: {
+    title: {
         type: String,
         required: true
     },
-    season: String,
-    epTitle: String,
-    episodeNum: Number,
+    season: Number,
+    epNum: Number,
     type: { type: String, default: 'episode' },
     songs: [{type: Schema.Types.ObjectId, ref: 'Song'}]
 }, {
