@@ -9,7 +9,7 @@ var showSchema = new Schema({
     },
     season: String,
     episode: {
-        epTitle: String;
+        epTitle: String,
         num: Number
     },
     type: { type: String, default: 'song' }
