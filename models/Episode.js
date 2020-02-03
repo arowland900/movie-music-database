@@ -3,14 +3,15 @@ var Schema = mongoose.Schema;
 
 
 var episodeSchema = new Schema({
-    title: {
+    showTitle: {
         type: String,
         required: true
     },
     season: String,
-    episodeTitle: String,
+    epTitle: String,
     episodeNum: Number,
-    type: { type: String, default: 'episode' }
+    type: { type: String, default: 'episode' },
+    songs: [{type: Schema.Types.ObjectId, ref: 'Song'}]
 }, {
     timestamps: true
 });
