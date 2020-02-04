@@ -7,12 +7,12 @@ var showSchema = new Schema({
     type: String,
     required: true
   },
-  writer: {
+  network: {
     type: String
   },
-  director: {
+  creators: [{
     type: String
-  },
+  }],
   year: Number,
   episodes: [{ type: Schema.Types.ObjectId, ref: 'Episode' }],
   type: { type: String, default: 'show' }

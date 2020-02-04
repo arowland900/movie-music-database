@@ -26,6 +26,7 @@ function create(req, res) {
         if (req.body[key] === '') delete req.body[key];
     }
     var show = new Show(req.body);
+    
     // movie.songs.push('5e3202ffadc67606612ac7c2')
     show.save(function (err) {
         if (err) return res.redirect('/shows/new');
