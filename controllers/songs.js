@@ -25,9 +25,9 @@ function create(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
-    var movie = new Song(req.body);
-    movie.save(function (err) {
+    var song = new Song(req.body);
+    song.save(function (err) {
         if (err) return res.redirect('/songs/new');
-        res.redirect(`/`);
+        res.redirect(`/songs/${song._id}`);
     });
 }

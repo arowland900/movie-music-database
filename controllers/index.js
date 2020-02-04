@@ -23,9 +23,21 @@ function index(req, res) {
                         //     return a.title[0] - b.title[0]
                         // })
                         let all = [...movies, ...songs, ...shows].sort((a, b) => {
-                            if (a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
-                            if (a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
-                            if (a.title.toLowerCase() == b.title.toLowerCase()) {
+                            let aFirstWord, bFirstWord
+                            let x = a.title.toLowerCase()
+                            let y = b.title.toLowerCase()
+                            aFirstWord = a.title.split(' ')[0]
+                            bFirstWord = b.title.split(' ')[0]
+
+                            if (aFirstWord.toLowerCase() == "the") {
+                                x = x.split(' ')[1]
+                            }
+                            if (bFirstWord.toLowerCase() == "the") {
+                                y = y.split(' ')[1]
+                            }
+                            if (x < y) { return -1; }
+                            if (x > y) { return 1; }
+                            if (x == y) {
                                 if (a.year < b.year) { return -1; }
                                 if (a.year > b.year) { return 1; }
                                 return 0
