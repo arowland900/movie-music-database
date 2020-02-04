@@ -1,20 +1,19 @@
 <%- include('../partials/header') %>
-
-<% if(shows){ %>
-
-<h1 class="jumbotron text-center">Add Episode Here</h1>
+<% if(show){ %>
+<% if(show._id){ %>
+<h1 class="jumbotron text-center">Add Episode for <%= show.title %></h1>
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-        <form action="/episodes" method="POST">
+        <form action="/shows/<%= show._id %>" method="POST">
             <div class="form-group">
                 <label for="sel1">Title:</label>
                 <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Title">
                 <label for="sel1">Season:</label>
-                <input type="text" name="season" autocomplete="off" class="form-control" placeholder="Season">
+                <input type="number" name="Season" autocomplete="off" class="form-control" placeholder="Season">
                 <label for="sel1">Episode Number:</label>
-                <input type="text" name="epNum" autocomplete="off" class="form-control" placeholder="Episode Number">
+                <input type="number" name="epNum" autocomplete="off" class="form-control" placeholder="Episode Number">
                 <label for="sel1">Air Date:</label>
-                <input type="text" name="airDate" autocomplete="off" class="form-control" placeholder="Air Dats">
+                <input type="date" name="airDate" autocomplete="off" class="form-control" placeholder="Air Date">
             </div>
             <!-- <span class="input-group-btn"> -->
             <!-- <br> -->
@@ -24,11 +23,42 @@
     </div>
 </div>
 <hr>
+<% } %>
+<% } else {%>
+
+<% if(shows){ %>
+
+<h1 class="jumbotron text-center">Choose Your Show</h1>
+<div class="row col-xs-8 col-xs-offset-2">
+    <div class="panel panel-default">
+        <%if(shows.length){ %>
+        <div class="panel-body">
+            <h3>Titles:</h3>
+            <div class="list-group">
+                <% shows.forEach(function(m) { %>
+                <a href="/shows/<%= m._id %>/episodes/new" class="list-group-item"><strong><%= m.title %></strong>,
+                    <i><%= m.year %></i> </a>
+                <% }); %>
+            </div>
+        </div>
+
+        <% } else { %>
+        <div class="row col-xs-8 col-xs-offset-2">
+            <h3 class="text-center text-info">
+                No Titles Match!
+            </h3>
+
+        </div>
+        <% } %>
+
+    </div>
+</div>
+<hr>
 <% } else { %>
-<h1 class="jumbotron text-center">First, Choose a Show</h1>
+<h1 class="jumbotron text-center">First, Search for a Show</h1>
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-        <form action="/shows" method="GET">
+        <form action="/shows/find" method="POST">
             <div class="input-group">
                 <input type="text" name="title" autocomplete="off" class="form-control"
                     placeholder="Enter Any Show Here">
@@ -39,6 +69,7 @@
         </form>
     </div>
 </div>
+<% } %>
 <% } %>
 
 </body>

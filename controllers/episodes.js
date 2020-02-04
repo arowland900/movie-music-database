@@ -1,4 +1,5 @@
-var Episode = require('../models/movie');
+var Episode = require('../models/episode');
+var Show = require('../models/show');
 
 module.exports = {
     new: newEpisode,
@@ -8,7 +9,16 @@ module.exports = {
 
 
 function newEpisode(req, res) {
-    res.render('episodes/new', { title: "Add Episode", shows: null })
+    console.log("HIT newEpisode, id?: ", req.params.id)
+    if(!req.params.id){
+        res.render('episodes/new', { title: "Add Episode", shows: null, show: null })
+    } else {
+        Show.findById(req.params.id)
+        .exec(function(err, show){
+            if(err) return res.redirect(`back`)
+            res.render('episodes/new', show)
+        })
+    }
 }
 
 function show(req, res) {
