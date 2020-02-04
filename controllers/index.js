@@ -31,7 +31,6 @@ function index(req, res) {
                             }
                             return 0;
                         })
-                        // console.log(all)
                         res.render('index', { title: "Add Movie", movies, songs, shows, all })
                     })
                 })
