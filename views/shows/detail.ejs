@@ -2,14 +2,18 @@
 <h1 class="jumbotron text-center"><%= show.title %></h1>
 <section id="show-page">
     <h1>Title: <strong><%= show.title %></strong></h1>
-    
+
     <h1>Network: <strong><%= show.network %></strong></h1>
-    
-    <h1>Creators:</h1> 
-    <% show.creators.forEach(c => { %>
-        <strong><%= c %></strong>
-    }) %>
-    
+
+    <h1>Creators:</h1>
+    <ul>
+        <%- show.creators.map(c => 
+        `
+        <li><strong>${c}</strong></li></a>
+        `
+      ).join('') %>
+    </ul>
+
     <h1>Release Year: <strong><%= show.year %></strong></h1>
 
     <h1>Episodes:</h1>

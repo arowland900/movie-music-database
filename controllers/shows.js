@@ -14,8 +14,10 @@ function newShow(req, res) {
 function show(req, res) {
     Show
         .findById(req.params.id)
-        .populate('songs episodes')
+        .populate('episodes')
         .exec(function (err, show) {
+            console.log("SHOW: ", show)
+            console.log("ERR: ", err)
             if (err) return res.redirect('/')
             res.render('shows/detail', { show })
         });

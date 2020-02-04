@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index')
 var movieRouter = require('./routes/movies');
 var songRouter = require('./routes/songs');
 var showRouter = require('./routes/shows');
+var episodeRouter = require('./routes/users');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/movies', movieRouter);
 app.use('/songs', songRouter);
 app.use('/shows', showRouter);
+app.use('/episodes', episodeRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
