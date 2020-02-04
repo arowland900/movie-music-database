@@ -29,10 +29,10 @@ function index(req, res) {
                             aFirstWord = a.title.split(' ')[0]
                             bFirstWord = b.title.split(' ')[0]
 
-                            if (aFirstWord.toLowerCase() == "the") {
+                            if (aFirstWord.toLowerCase() == "the" || aFirstWord.toLowerCase() == "a") {
                                 x = x.split(' ')[1]
                             }
-                            if (bFirstWord.toLowerCase() == "the") {
+                            if (bFirstWord.toLowerCase() == "the" || bFirstWord.toLowerCase() == "a") {
                                 y = y.split(' ')[1]
                             }
                             if (x < y) { return -1; }
