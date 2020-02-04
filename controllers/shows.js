@@ -62,6 +62,6 @@ function create(req, res) {
     // movie.songs.push('5e3202ffadc67606612ac7c2')
     show.save(function (err) {
         if (err) return res.redirect('/shows/new');
-        res.redirect(`/`);
+        res.redirect(`/shows/${show._id}`);
     });
 }
