@@ -1,6 +1,7 @@
 var Movie = require('../models/movie');
 var Song = require('../models/song');
 var Show = require('../models/show');
+var Episode = require('../models/episode');
 
 module.exports = {
     index

@@ -1,16 +1,17 @@
 <%- include('../partials/header') %>
-<h1 class="jumbotron text-center"><%=# song.title %></h1>
+<h1 class="jumbotron text-center"><%= episode.title %></h1>
 <section id="show-page">
-    <h1>Title: <strong><%=# song.title %></strong></h1>
+    <h1>Title: <strong><%= episode.title %></strong></h1>
 
-    <h1>Release Year: <strong><%=# song.year %></strong></h1>
+    <h1>Season: <strong><%= episode.season %></strong></h1>
 
-    <h1>Artist: <strong><%=# song.artist %></strong></h1>
+    <h1>Episode: <strong><%= episode.epNum %></strong></h1>
 
-    <h1>Movies: not coded out yet</h1>
+    <h1>airDate:<strong><%= episode.airDate %></strong></h1></h1>
 
 </section>
 
 </body>
 
 </html>
+

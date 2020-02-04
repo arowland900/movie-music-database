@@ -4,12 +4,14 @@
         <div class="col-xs-6 col-xs-offset-3">
             <form action="/episodes" method="POST">
                 <div class="form-group">
-                    <label for="sel1">Show Title:</label>
-                    <input type="text" name="showTitle" autocomplete="off" class="form-control" placeholder="Title">
-                    <label for="sel1">Artist:</label>
-                    <input type="text" name="artist" autocomplete="off" class="form-control" placeholder="Artist">
-                    <label for="sel1">Year:</label>
-                    <input type="text" name="year" autocomplete="off" class="form-control" placeholder="Year">
+                    <label for="sel1">Title:</label>
+                    <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Title">
+                    <label for="sel1">Season:</label>
+                    <input type="text" name="season" autocomplete="off" class="form-control" placeholder="Season">
+                    <label for="sel1">Episode Number:</label>
+                    <input type="text" name="epNum" autocomplete="off" class="form-control" placeholder="Episode Number">
+                    <label for="sel1">Air Date:</label>
+                    <input type="text" name="airDate" autocomplete="off" class="form-control" placeholder="Air Dats">
                 </div>
                 <!-- <span class="input-group-btn"> -->
                     <!-- <br> -->
@@ -23,3 +25,10 @@
 </body>
 
 </html>
+<!-- title: {
+        type: String,
+        required: true
+    },
+    season: Number,
+    epNum: Number,
+    airDate: Date, -->
