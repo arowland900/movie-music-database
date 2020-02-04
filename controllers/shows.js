@@ -1,8 +1,7 @@
 var Show = require('../models/show');
-var Song = require('../models/song');
 
 module.exports = {
-    new: newMovie,
+    new: newShow,
     create,
     show
 };
