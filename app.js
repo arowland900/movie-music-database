@@ -7,7 +7,7 @@ require('./config/database');
 
 var indexRouter = require('./routes/index')
 var songRouter = require('./routes/songs');
-var episodeRouter = require('./routes/users');
+var episodeRouter = require('./routes/episodes');
 var showRouter = require('./routes/shows');
 var movieRouter = require('./routes/movies');
 var usersRouter = require('./routes/users');
