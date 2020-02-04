@@ -1,34 +1,46 @@
 <%- include('../partials/header') %>
-    <h1 class="jumbotron text-center">Add Episode Here</h1>
-    <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <form action="/episodes" method="POST">
-                <div class="form-group">
-                    <label for="sel1">Title:</label>
-                    <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Title">
-                    <label for="sel1">Season:</label>
-                    <input type="text" name="season" autocomplete="off" class="form-control" placeholder="Season">
-                    <label for="sel1">Episode Number:</label>
-                    <input type="text" name="epNum" autocomplete="off" class="form-control" placeholder="Episode Number">
-                    <label for="sel1">Air Date:</label>
-                    <input type="text" name="airDate" autocomplete="off" class="form-control" placeholder="Air Dats">
-                </div>
-                <!-- <span class="input-group-btn"> -->
-                    <!-- <br> -->
-                    <button class="btn btn-success" type="submit">Submit</button>
-                <!-- </span> -->
-            </form>
-        </div>
+
+<% if(shows){ %>
+
+<h1 class="jumbotron text-center">Add Episode Here</h1>
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <form action="/episodes" method="POST">
+            <div class="form-group">
+                <label for="sel1">Title:</label>
+                <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Title">
+                <label for="sel1">Season:</label>
+                <input type="text" name="season" autocomplete="off" class="form-control" placeholder="Season">
+                <label for="sel1">Episode Number:</label>
+                <input type="text" name="epNum" autocomplete="off" class="form-control" placeholder="Episode Number">
+                <label for="sel1">Air Date:</label>
+                <input type="text" name="airDate" autocomplete="off" class="form-control" placeholder="Air Dats">
+            </div>
+            <!-- <span class="input-group-btn"> -->
+            <!-- <br> -->
+            <button class="btn btn-success" type="submit">Submit</button>
+            <!-- </span> -->
+        </form>
     </div>
-    <hr>
+</div>
+<hr>
+<% } else { %>
+<h1 class="jumbotron text-center">First, Choose a Show</h1>
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <form action="/shows" method="GET">
+            <div class="input-group">
+                <input type="text" name="title" autocomplete="off" class="form-control"
+                    placeholder="Enter Any Show Here">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">Go!</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<% } %>
 
 </body>
 
 </html>
-<!-- title: {
-        type: String,
-        required: true
-    },
-    season: Number,
-    epNum: Number,
-    airDate: Date, -->

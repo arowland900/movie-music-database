@@ -8,7 +8,7 @@ module.exports = {
 
 
 function newEpisode(req, res) {
-    res.render('episodes/new', { title: "Add Episode" })
+    res.render('episodes/new', { title: "Add Episode", shows: null })
 }
 
 function show(req, res) {

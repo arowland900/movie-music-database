@@ -3,8 +3,25 @@ var Show = require('../models/show');
 module.exports = {
     new: newShow,
     create,
-    show
+    show,
+    find
 };
+
+function find(req, res) {
+    Show.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, shows) {
+        shows.sort((a, b) => {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+            if (a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+            if (a.title.toLowerCase() == b.title.toLowerCase()) {
+                if (a.year < b.year) { return -1; }
+                if (a.year > b.year) { return 1; }
+                return 0
+            }
+            return 0;
+        })
+        res.render('episodes/new', { title: "Add Episode", shows })
+    })
+}
 
 
 function newShow(req, res) {
