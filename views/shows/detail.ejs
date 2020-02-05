@@ -20,7 +20,7 @@
     <ul>
         <%- show.episodes.map(e => 
         `
-        <a href=/episodes/${e._id}><li><strong>S${e.season} E${e.epNum}</strong><i>${e.title}</i><small>${e.airDate}</small> </li></a>
+        <a href=/shows/${show._id}/episodes/${e._id}><li><strong>S${e.season} E${e.epNum}</strong><i>${e.title}</i><small>${e.airDate}</small> </li></a>
         `
       ).join('') %>
     </ul>

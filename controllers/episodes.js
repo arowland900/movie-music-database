@@ -10,10 +10,13 @@ module.exports = {
 };
 
 function edit(req, res) {
-    Episode.findById(req.params.id)
+    Episode.findById(req.params.eid)
         .exec(function (e, episode) {
-            if (e) return res.redirect(`back`)
-            res.render('episodes/edit', { episode })
+            Show.findById(req.params.sid)
+            .exec(function(e, show){
+                if (e) return res.redirect(`back`)
+                res.render('episodes/edit', { episode, show })
+            })
         })
 }
 
@@ -21,11 +24,13 @@ function update(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
-    Episode.findByIdAndUpdate(req.params.id, req.body)
+    Episode.findByIdAndUpdate(req.params.eid, req.body)
         .exec(function (err, episode) {
-            console.log("UPDATED EPISODE~~~: ", episode)
-            if (err) return res.redirect(`back`)
-            res.redirect(`/episodes/${episode._id}`)
+            Show.findById(req.params.sid)
+            .exec(function(err, show){
+                if (err) return res.redirect(`back`)
+                res.redirect(`/shows/${show._id}/episodes/${episode._id}`)
+            })
             // res.render('episodes/detail', { episode })
         })
 }
@@ -46,10 +51,13 @@ function newEpisode(req, res) {
 
 function show(req, res) {
     Episode
-        .findById(req.params.id)
+        .findById(req.params.eid)
         .exec(function (err, episode) {
-            if (err) return res.redirect('/')
-            res.render('episodes/detail', { episode })
+            Show.findById(req.params.sid)
+            .exec(function(err, show){
+                if (err) return res.redirect('/')
+                res.render('episodes/detail', { episode, show })
+            })
         });
 }
 

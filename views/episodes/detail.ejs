@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<h1 class="jumbotron text-center"><%= episode.title %></h1>
+<h1 class="jumbotron text-center"><strong><%= show.title %></strong>, <%= episode.title %></h1>
 <section id="show-page">
     <h1>Title: <strong><%= episode.title %></strong></h1>
 
@@ -7,9 +7,9 @@
 
     <h1>Episode: <strong><%= episode.epNum %></strong></h1>
 
-    <h1>Air Date:<strong><%= episode.airDate %></strong></h1></h1>
+    <h1>Air Date: <strong><%= episode.airDate %></strong></h1></h1>
     
-    <a href="/episodes/<%= episode._id %>/edit">Update</a>
+    <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/edit">Update</a>
 
 </section>
 
