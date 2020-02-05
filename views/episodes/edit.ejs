@@ -2,16 +2,16 @@
     <h1 class="jumbotron text-center">Add Show Here</h1>
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <form action="/episodes/:id?_method=PUT" method="POST">
+            <form action="/episodes/<%= episode._id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <label for="sel1">Title:</label>
-                    <input type="text" name="title" autocomplete="off" class="form-control" placeholder="<%= episode.title %>">
+                    <input type="text" name="title" autocomplete="off" class="form-control" value="<%= episode.title %>">
                     <label for="sel1">Season:</label>
-                    <input type="number" name="season" autocomplete="off" class="form-control" placeholder="<%= episode.season %>">
+                    <input type="number" name="season" autocomplete="off" class="form-control" value="<%= episode.season %>">
                     <label for="sel1">Episode Number:</label>
-                    <input type="number" name="epNum" autocomplete="off" class="form-control" placeholder="<%= episode.epNum %>">
+                    <input type="number" name="epNum" autocomplete="off" class="form-control" value="<%= episode.epNum %>">
                     <label for="sel1">Air Date:</label>
-                    <input type="date" name="airDate" autocomplete="off" class="form-control" placeholder="<%= episode.airDate %>">
+                    <input type="date" name="airDate" autocomplete="off" class="form-control" value="<%= episode.airDate %>">
                 </div>
                 <!-- <span class="input-group-btn"> -->
                     <!-- <br> -->

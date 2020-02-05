@@ -9,20 +9,24 @@ module.exports = {
     edit
 };
 
-function edit(req, res){
+function edit(req, res) {
     Episode.findById(req.params.id)
-    .exec(function(e, episode){
-        if(e) return res.redirect(`back`)
-        res.render('episodes/edit', { episode })
-    })
+        .exec(function (e, episode) {
+            if (e) return res.redirect(`back`)
+            res.render('episodes/edit', { episode })
+        })
 }
 
 function update(req, res) {
-    let ep = new Episode(req.body)
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+    }
     Episode.findByIdAndUpdate(req.params.id, req.body)
         .exec(function (err, episode) {
+            console.log("UPDATED EPISODE~~~: ", episode)
             if (err) return res.redirect(`back`)
-            res.render('episodes/detail', { episode })
+            res.redirect(`/episodes/${episode._id}`)
+            // res.render('episodes/detail', { episode })
         })
 }
 
