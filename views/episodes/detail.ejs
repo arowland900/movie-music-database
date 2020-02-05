@@ -32,10 +32,8 @@
         <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/edit">Update</a>
 
     </section>
-    <section id="show-page" class='half-child' style="margin-top: 20vh;">
-        <!-- <div class="row"> -->
-        <!-- <div class="col-xs-6 col-xs-offset-3"> -->
-        <form action="/" method="POST">
+    <section id="show-page" class='half-child'>
+        <form action="/shows/<%= show._id %>/episodes/<%= episode._id %>/songs" method="POST">
             <div class="input-group">
                 <input type="text" name="title" autocomplete="off" class="form-control"
                     placeholder="Enter Any Title Here">
@@ -44,8 +42,33 @@
                 </span>
             </div>
         </form>
-        <!-- </div>  -->
-        <!-- </div> -->
+        <% if(!searchedSongs){ %>
+        <div class="row col-xs-8 col-xs-offset-2">
+            <h3 class="text-center text-info">
+                Search for a Title!
+            </h3>
+
+        </div>
+        <% } else { %>
+        <div class="row col-xs-12 ">
+            <div class="panel-body">
+                <% if(searchedSongs.length){ %>
+                <% searchedSongs.forEach(s => { %>
+                <h5 class=" text-info">
+                    <%= s.title %>, <%= s.artist %> – <%= s.year %>
+                </h5>
+                <% }) %>
+            </div>
+        </div>
+        <% } else { %>
+        <div class="row col-xs-8 col-xs-offset-2">
+            <h3 class="text-center text-info">
+                No Titles Matched
+            </h3>
+
+        </div>
+        <% } %>
+        <% } %>
     </section>
 </div>
 

@@ -12,14 +12,19 @@ module.exports = {
 };
 
 function addSong(req, res) {
-    Episode.findById(req.params.id)
-        .exec(function (err, ep) {
-            Song.find({})
-                .exec(function (err, songs) {
-                    if(err) res.redirect(`back`)
-                    res.render('episodes/detail', {ep, songs})
+    Episode
+        .findById(req.params.eid)
+        .populate('songs')
+        .exec(function (err, episode) {
+            console.log("OUTER HIT")
+            Show.findById(req.params.sid)
+                .exec(function (err, show) {
+                    Song.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, searchedSongs){
+                        if (err) return res.redirect('/')
+                        res.render('episodes/detail', { episode, show, searchedSongs })
+                    })
                 })
-        })
+        });
 }
 
 function edit(req, res) {
@@ -72,7 +77,7 @@ function show(req, res) {
                 .exec(function (err, show) {
                     console.log("INNER HIT")
                     if (err) return res.redirect('/')
-                    res.render('episodes/detail', { episode, show })
+                    res.render('episodes/detail', { episode, show, searchedSongs: null })
                 })
         });
 }

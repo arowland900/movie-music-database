@@ -14,5 +14,6 @@ router.get('/:id/episodes/new', showsCtrl.newEpisode);
 router.get('/:sid/episodes/:eid', episodesCtrl.show);
 router.get('/:sid/episodes/:eid/edit', episodesCtrl.edit);
 router.put('/:sid/episodes/:eid', episodesCtrl.update);
+router.post('/:sid/episodes/:eid/songs', episodesCtrl.addSong)
 
 module.exports = router;
