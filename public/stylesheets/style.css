@@ -12,3 +12,12 @@ nav {
   justify-content: space-around;
 }
 
+.half-half {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* .half-child {
+  width: 300px;
+} */

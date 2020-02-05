@@ -1,20 +1,56 @@
 <%- include('../partials/header') %>
 <h1 class="jumbotron text-center"><strong><%= show.title %></strong>, <%= episode.title %></h1>
-<section id="show-page">
-    <h1>Title: <strong><%= episode.title %></strong></h1>
+<div class="half-half">
 
-    <h1>Season: <strong><%= episode.season %></strong></h1>
 
-    <h1>Episode: <strong><%= episode.epNum %></strong></h1>
+    <section id="show-page" class='half-child'>
+        <h1>Title: <strong><%= episode.title %></strong></h1>
 
-    <h1>Air Date: <strong><%= episode.airDate %></strong></h1></h1>
-    
-    <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/edit">Update</a>
+        <h1>Season: <strong><%= episode.season %></strong></h1>
 
-</section>
+        <h1>Episode: <strong><%= episode.epNum %></strong></h1>
+
+        <h1>Air Date: <strong><%= episode.airDate.toString().slice(4,16) %></strong></h1>
+        </h1>
+
+        <% if(episode.songs.length){ %>
+
+
+        <h1>Songs: </h1>
+        <ul>
+            <%- episode.songs.map(s => 
+        `
+        <a href=/songs/${s._id}><li><strong>%{s.title} – ${s.artist}</strong>, <i>${s.year}</i> </li></a>
+        `
+      ).join('') %>
+        </ul>
+        <% } else { %>
+        <h1>No Songs Added Yet</h1>
+        <% } %>
+
+        <a href="/episodes/<%= episode._id %>/songs/add">Add Song</a>
+
+        <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/edit">Update</a>
+
+    </section>
+    <section id="show-page" class='half-child'>
+        <!-- <div class="row"> -->
+            <!-- <div class="col-xs-6 col-xs-offset-3"> -->
+                <form action="/" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="title" autocomplete="off" class="form-control"
+                            placeholder="Enter Any Title Here">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Go!</button>
+                        </span>
+                    </div>
+                </form>
+            <!-- </div>  -->
+        <!-- </div> -->
+    </section>
+</div>
 
 
 </body>
 
 </html>
-

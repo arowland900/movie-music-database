@@ -9,5 +9,6 @@ router.get('/new', episodesCtrl.new);
 // router.get('/:id', episodesCtrl.show);
 router.get('/:id/edit', episodesCtrl.edit);
 // router.put('/:id', episodesCtrl.update);
+// router.get('/:id/songs/add', episodesCtrl.addSong)
 
 module.exports = router;

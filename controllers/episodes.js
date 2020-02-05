@@ -1,22 +1,34 @@
 var Episode = require('../models/episode');
 var Show = require('../models/show');
+var Song = require('../models/song');
 
 module.exports = {
     new: newEpisode,
     show,
     create,
     update,
-    edit
+    edit,
+    // addSong
 };
+
+// function addSong(req, res) {
+//     Episode.findById(req.params.id)
+//         .exec(function (err, ep) {
+//             Song.find({})
+//                 .exec(function (err, songs) {
+
+//                 })
+//         })
+// }
 
 function edit(req, res) {
     Episode.findById(req.params.eid)
         .exec(function (e, episode) {
             Show.findById(req.params.sid)
-            .exec(function(e, show){
-                if (e) return res.redirect(`back`)
-                res.render('episodes/edit', { episode, show })
-            })
+                .exec(function (e, show) {
+                    if (e) return res.redirect(`back`)
+                    res.render('episodes/edit', { episode, show })
+                })
         })
 }
 
@@ -27,10 +39,10 @@ function update(req, res) {
     Episode.findByIdAndUpdate(req.params.eid, req.body)
         .exec(function (err, episode) {
             Show.findById(req.params.sid)
-            .exec(function(err, show){
-                if (err) return res.redirect(`back`)
-                res.redirect(`/shows/${show._id}/episodes/${episode._id}`)
-            })
+                .exec(function (err, show) {
+                    if (err) return res.redirect(`back`)
+                    res.redirect(`/shows/${show._id}/episodes/${episode._id}`)
+                })
             // res.render('episodes/detail', { episode })
         })
 }
@@ -54,10 +66,10 @@ function show(req, res) {
         .findById(req.params.eid)
         .exec(function (err, episode) {
             Show.findById(req.params.sid)
-            .exec(function(err, show){
-                if (err) return res.redirect('/')
-                res.render('episodes/detail', { episode, show })
-            })
+                .exec(function (err, show) {
+                    if (err) return res.redirect('/')
+                    res.render('episodes/detail', { episode, show })
+                })
         });
 }
 
