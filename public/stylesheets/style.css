@@ -18,6 +18,11 @@ nav {
   justify-content: space-around;
 }
 
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* .half-child {
   width: 300px;
 } */

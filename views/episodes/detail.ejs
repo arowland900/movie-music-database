@@ -20,7 +20,7 @@
         <ul>
             <%- episode.songs.map(s => 
         `
-        <a href=/songs/${s._id}><li><strong>%{s.title} – ${s.artist}</strong>, <i>${s.year}</i> </li></a>
+        <a href=/songs/${s._id}><li><strong>${s.title} – ${s.artist}</strong>, <i>${s.year}</i> </li></a>
         `
       ).join('') %>
         </ul>
@@ -32,16 +32,17 @@
         <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/edit">Update</a>
 
     </section>
-    <section id="show-page" class='half-child'>
+    <section id="show-page" class='half-child' style="width: 393px;">
         <form action="/shows/<%= show._id %>/episodes/<%= episode._id %>/songs" method="POST">
             <div class="input-group">
                 <input type="text" name="title" autocomplete="off" class="form-control"
-                    placeholder="Enter Any Title Here">
+                    placeholder="Enter Song Title Here">
                 <span class="input-group-btn">
                     <button class="btn btn-success" type="submit">Go!</button>
                 </span>
             </div>
         </form>
+        <br>
         <% if(!searchedSongs){ %>
         <div class="row col-xs-8 col-xs-offset-2">
             <h3 class="text-center text-info">
@@ -50,25 +51,40 @@
 
         </div>
         <% } else { %>
-        <div class="row col-xs-12 ">
-            <div class="panel-body">
-                <% if(searchedSongs.length){ %>
-                <% searchedSongs.forEach(s => { %>
-                <h5 class=" text-info">
-                    <%= s.title %>, <%= s.artist %> – <%= s.year %>
-                </h5>
-                <% }) %>
-            </div>
-        </div>
-        <% } else { %>
-        <div class="row col-xs-8 col-xs-offset-2">
-            <h3 class="text-center text-info">
-                No Titles Matched
-            </h3>
+        <% if(searchedSongs.length){ %>
+        <div class="row ">
+            <div class="panel panel-default">
 
-        </div>
-        <% } %>
-        <% } %>
+                <div class="panel-body">
+                    <h3>Songs:</h3>
+                    <div class="list-group">
+                            <% searchedSongs.forEach(function(s) { %>
+                                <% if(!episode.songs.toString().includes(s.toString())){ %>
+                                    <a href="/shows/<%= show._id %>/episodes/<%= episode._id %>/songs/<%= s._id %>"
+                                        class="list-group-item"><strong><%= s.title %></strong> - <%= s.artist %>,
+                                        <i><%= s.year %></i>
+                                    </a>
+                                    <% } else { %>
+                                        <a 
+                                            class="list-group-item"><strong><%= s.title %></strong> - <%= s.artist %>,
+                                            <i><%= s.year %></i>
+                                        </a>
+                                    <% } %>
+
+                            <% }); %>
+                    </div>
+                </div>
+
+
+                <% } else { %>
+                <div class="row col-xs-8 col-xs-offset-2">
+                    <h3 class="text-center text-info">
+                        No Titles Matched
+                    </h3>
+
+                </div>
+                <% } %>
+                <% } %>
     </section>
 </div>
 
