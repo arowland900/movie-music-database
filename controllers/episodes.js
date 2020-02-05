@@ -8,18 +8,19 @@ module.exports = {
     create,
     update,
     edit,
-    // addSong
+    addSong
 };
 
-// function addSong(req, res) {
-//     Episode.findById(req.params.id)
-//         .exec(function (err, ep) {
-//             Song.find({})
-//                 .exec(function (err, songs) {
-
-//                 })
-//         })
-// }
+function addSong(req, res) {
+    Episode.findById(req.params.id)
+        .exec(function (err, ep) {
+            Song.find({})
+                .exec(function (err, songs) {
+                    if(err) res.redirect(`back`)
+                    res.render('episodes/detail', {ep, songs})
+                })
+        })
+}
 
 function edit(req, res) {
     Episode.findById(req.params.eid)
@@ -64,9 +65,12 @@ function newEpisode(req, res) {
 function show(req, res) {
     Episode
         .findById(req.params.eid)
+        .populate('songs')
         .exec(function (err, episode) {
+            console.log("OUTER HIT")
             Show.findById(req.params.sid)
                 .exec(function (err, show) {
+                    console.log("INNER HIT")
                     if (err) return res.redirect('/')
                     res.render('episodes/detail', { episode, show })
                 })
