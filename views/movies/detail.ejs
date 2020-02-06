@@ -52,7 +52,7 @@
           <div class="list-group">
             <% searchedSongs.forEach(function(s) { %>
             <% if(!movie.songs.toString().includes(s.toString())){ %>
-            <a href="/movie/<%= movie._id %>/songs/<%= s._id %>" class="list-group-item"><strong><%= s.title %></strong>
+            <a href="/movies/<%= movie._id %>/songs/<%= s._id %>" class="list-group-item"><strong><%= s.title %></strong>
               - <%= s.artist %>,
               <i><%= s.year %></i>
             </a>

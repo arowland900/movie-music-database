@@ -8,5 +8,6 @@ router.post('/', moviesCtrl.create)
 router.get('/new', moviesCtrl.new);
 router.get('/:id', moviesCtrl.show);
 router.post('/:id/songs', moviesCtrl.findSong);
+router.get('/:mid/songs/:sid', moviesCtrl.addSong);
 
 module.exports = router;
