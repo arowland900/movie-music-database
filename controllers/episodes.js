@@ -27,6 +27,7 @@ function addSong(req, res) {
                                 if(!episode.songs.includes(song)){
                                     episode.songs.push(song)
                                 }
+                                // TO QUICKLY DELETE ALL SONGS FROM AN EPISODE, RUN CODE DIRECTLY BELOW
                                 // episode.songs.splice(0,episode.songs.length)
                                 episode.save(function (err) {
                                     if (err) return res.redirect('/')
