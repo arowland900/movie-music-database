@@ -17,9 +17,11 @@ function show(req, res) {
         .findById(req.params.id)
         .populate('songs')
         .exec(function (err, movie) {
-            if (err) return res.redirect('/')
-            res.render('movies/detail', { movie })
-        });
+            // Song.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, searchedSongs) {
+                if (err) return res.redirect('/')
+                res.render('movies/detail', { movie, searchedSongs: null })
+            // });
+        })
 }
 
 function create(req, res) {

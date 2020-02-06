@@ -1,21 +1,89 @@
 <%- include('../partials/header') %>
 <h1 class="jumbotron text-center"><%= movie.title %></h1>
-<section id="show-page">
+<div class="half-half">
+  <section id="show-page" class='half-child'>
     <h1>Title: <strong><%= movie.title %></strong></h1>
 
     <h1>Release Year: <strong><%= movie.year %></strong></h1>
 
     <h1>Rating: <strong><%= movie.rating %></strong></h1>
 
+
+    <% if(movie.songs.length){ %>
     <h1>Songs:</h1>
     <ul>
-        <%- movie.songs.map(p => 
+      <%- movie.songs.map(p => 
         `
         <a href=/songs/${p._id}><li>${p.title} <small>${p.artist}</small></li></a>
         `
       ).join('') %>
     </ul>
-</section>
+    <% } else { %>
+    <h1>No Songs Added Yet</h1>
+    <% } %>
+    <a href="/movies/<%= movie._id %>/edit">Update</a>
+  </section>
+
+
+  <section id="show-page" class='half-child' style="width: 393px; margin-top: 20px;">
+    <form action="/movies/<%= movie._id %>/songs" method="POST">
+      <div class="input-group">
+        <input type="text" name="title" autocomplete="off" class="form-control" placeholder="Enter Song Title Here">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="submit">Go!</button>
+        </span>
+      </div>
+    </form>
+    <br>
+    <% if(!searchedSongs){ %>
+    <div class="row col-xs-8 col-xs-offset-2">
+      <h3 class="text-center text-info">
+        Search for a Title!
+      </h3>
+
+    </div>
+    <% } else { %>
+    <% if(searchedSongs.length){ %>
+    <div class="row ">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <h3>Songs:</h3>
+          <div class="list-group">
+            <% searchedSongs.forEach(function(s) { %>
+            <% if(!movie.songs.toString().includes(s.toString())){ %>
+            <a href="/movie/<%= movie._id %>/songs/<%= s._id %>" class="list-group-item"><strong><%= s.title %></strong>
+              - <%= s.artist %>,
+              <i><%= s.year %></i>
+            </a>
+            <% } else { %>
+            <a class="list-group-item"><strong><%= s.title %></strong> - <%= s.artist %>,
+              <i><%= s.year %></i>
+            </a>
+            <% } %>
+
+            <% }); %>
+          </div>
+        </div>
+
+
+        <% } else { %>
+        <div class="row col-xs-8 col-xs-offset-2">
+          <h3 class="text-center text-info">
+            No Titles Matched
+          </h3>
+
+        </div>
+        <% } %>
+        <% } %>
+  </section>
+</div>
+</div>
+
+
+</body>
+
+</html>
 
 </body>
 
