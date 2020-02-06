@@ -4,8 +4,23 @@ var Song = require('../models/song');
 module.exports = {
     new: newMovie,
     create,
-    show
+    show,
+    findSong
 };
+
+function findSong(req, res) {
+    Movie
+        .findById(req.params.id)
+        .populate('songs')
+        .exec(function (err, movie) {
+            console.log("OUTER HIT")
+            // Song.find({ "title": { "$regex": req.body.title, "$options": "i" }, "_id": { $nin: episode.songs } }, function (err, searchedSongs) {
+            Song.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, searchedSongs) {
+                if (err) return res.redirect('/')
+                res.render('movies/detail', { movie, searchedSongs })
+            })
+        })
+}
 
 
 function newMovie(req, res) {
@@ -18,8 +33,8 @@ function show(req, res) {
         .populate('songs')
         .exec(function (err, movie) {
             // Song.find({ "title": { "$regex": req.body.title, "$options": "i" } }, function (err, searchedSongs) {
-                if (err) return res.redirect('/')
-                res.render('movies/detail', { movie, searchedSongs: null })
+            if (err) return res.redirect('/')
+            res.render('movies/detail', { movie, searchedSongs: null })
             // });
         })
 }
